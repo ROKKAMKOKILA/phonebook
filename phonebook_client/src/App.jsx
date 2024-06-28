@@ -1,13 +1,13 @@
 import  { useState, useEffect } from 'react';
 import Axios from 'axios';
-import './App.css';
+import './App.css'; 
 
 function App() {
 const [formData,setFormData]=useState({
   name:"",
   phone:"",
   email:"",
-  rollno:"",
+  rollno:"", 
   Branch:"",
 })
   const [phonebook, setPhonebook] = useState([]);
@@ -80,20 +80,19 @@ const [formData,setFormData]=useState({
     <div className="container">
       <h1>PhoneBook List</h1>
       {/* Form for adding new phone number */}
-      <div className="add-form">
+      <form onSubmit={addNewNumber} className="add-form">
         <label htmlFor="name">Name:</label>
-        <input name='name' type="text" id="name" value={formData.name} onChange={handleChange} /><br/><br/>
+        <input name='name' required type="text" id="name" value={formData.name} onChange={handleChange} /><br/><br/>
         <label htmlFor="Branch">Branch</label>
-        <input name='Branch' type="text" id="Branch" value={formData.Branch} onChange={handleChange} /><br/><br/>
+        <input name='Branch' required type="text" id="Branch" value={formData.Branch} onChange={handleChange} /><br/><br/>
         <label htmlFor="Rollno">Rollno:</label>
-        <input name='rollno' type="text" id="Rollno" value={formData.rollno} onChange={handleChange} /><br/><br/> 
+        <input name='rollno'required  type="text" id="Rollno" value={formData.rollno} onChange={handleChange} minLength={10} maxLength={10}/><br/><br/> 
         <label htmlFor="phone">Phone:</label>
-        <input name='phone' type="text" id="phone" value={formData.phone} onChange={handleChange} /><br/><br/>
+        <input name='phone' required type="text" id="phone" value={formData.phone} onChange={handleChange} minLength={10} maxLength={10}/><br/><br/>
         <label htmlFor="email">Email:</label>
-        <input name='email' type="email" id="email" value={formData.email} onChange={handleChange} /><br/><br/>
-
-        <button onClick={addNewNumber}>Add New Number</button>
-      </div>
+        <input name='email' required type="email" id="email" value={formData.email} onChange={handleChange} /><br/><br/>
+        <button>Add New Number</button>
+      </form>
 
       {/* List of phonebook entries */}
       {phonebook.map((entry, idx) => (

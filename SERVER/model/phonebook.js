@@ -16,6 +16,7 @@ const phoneBookSchema = new mongoose.Schema({
         type:String,
         required: true,
         maxlength:10,
+        minlength:10
     },
     Branch:
     {
@@ -24,7 +25,9 @@ const phoneBookSchema = new mongoose.Schema({
     },
     phone: {
         type: String,
-        required: true
+        required: true,
+        maxlength:10,
+        minlength:10
     }
 });
 
